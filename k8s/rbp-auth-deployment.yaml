@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: C:\Users\Go\AppData\Local\Microsoft\WinGet\Links\kompose.exe convert
+    kompose.version: 1.30.0 (9d8dcb518)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: rbp-auth
+  name: rbp-auth
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: rbp-auth
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: C:\Users\Go\AppData\Local\Microsoft\WinGet\Links\kompose.exe convert
+        kompose.version: 1.30.0 (9d8dcb518)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/restful-booker-platform-default: 'true'
+        io.kompose.service: rbp-auth
+    spec:
+      containers:
+        - image: mwinteringham/restfulbookerplatform_auth:1.6.a1fd0e5
+          name: rbp-auth
+          ports:
+            - containerPort: 3004
+              hostPort: 3004
+              protocol: TCP
+          resources: {}
+      restartPolicy: Always
+status: {}

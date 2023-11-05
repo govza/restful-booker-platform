@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: C:\Users\Go\AppData\Local\Microsoft\WinGet\Links\kompose.exe convert
+    kompose.version: 1.30.0 (9d8dcb518)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: rbp-auth
+  name: rbp-auth
+spec:
+  ports:
+    - name: '3004'
+      port: 3004
+      targetPort: 3004
+  selector:
+    io.kompose.service: rbp-auth
+status:
+  loadBalancer: {}

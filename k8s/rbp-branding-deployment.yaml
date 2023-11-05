@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: C:\Users\Go\AppData\Local\Microsoft\WinGet\Links\kompose.exe convert
+    kompose.version: 1.30.0 (9d8dcb518)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: rbp-branding
+  name: rbp-branding
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: rbp-branding
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: C:\Users\Go\AppData\Local\Microsoft\WinGet\Links\kompose.exe convert
+        kompose.version: 1.30.0 (9d8dcb518)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/restful-booker-platform-default: 'true'
+        io.kompose.service: rbp-branding
+    spec:
+      containers:
+        - image: mwinteringham/restfulbookerplatform_branding:1.6.a1fd0e5
+          name: rbp-branding
+          ports:
+            - containerPort: 3002
+              hostPort: 3002
+              protocol: TCP
+          resources: {}
+      restartPolicy: Always
+status: {}
